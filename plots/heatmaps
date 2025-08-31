@@ -1,5 +1,5 @@
 
-Rplot11: Heatmap of Gene Expression Across Samples
+##Rplot11: Heatmap of Gene Expression Across Samples##
 Heading: Gene Expression Heatmap
 Interpretation:
 Rows represent individual genes.
@@ -7,28 +7,33 @@ Columns represent different samples.
 Color intensity indicates the level of gene expression, with the scale on the right.
 Yellow indicates higher expression, while purple indicates lower expression.
 Conclusion: This heatmap allows for the visualization of gene expression patterns across samples, highlighting potential biomarkers or differentially expressed genes.
-Rplot12: Heatmap with Sample Clustering
+
+##Rplot12: Heatmap with Sample Clustering##
 Heading: Clustered Gene Expression Heatmap
 Interpretation:
 Similar to Rplot1, but with samples clustered based on expression patterns.
 Clustering can reveal groups of samples with similar gene expression profiles.
 Conclusion: Sample clustering provides insights into subgroups within the dataset that may correspond to different conditions or treatments.
-Rplot13: Heatmap with Different Color Scale
+
+##Rplot13: Heatmap with Different Color Scale##
 Heading: Alternate Scale Gene Expression Heatmap
 Interpretation:
 Displays gene expression with a different color scale, potentially to emphasize certain expression levels.
 Conclusion: The choice of color scale can affect the interpretation of gene expression differences, making this heatmap useful for specific analytical purposes.
-Rplot14: Heatmap with Gene Names
+
+##Rplot14: Heatmap with Gene Names##
 Heading: Gene-Named Expression Heatmap
 Interpretation:
 Genes are labeled on the y-axis for easy identification.
 Conclusion: This heatmap is useful for quickly identifying which genes show significant changes in expression across samples.
-Rplot19: Heatmap of Principal Component Loadings
+
+##Rplot19: Heatmap of Principal Component Loadings##
 Heading: Principal Component Analysis (PCA) Loadings
 Interpretation:
 Shows the contribution of each gene to the first principal component (PC_1).
 Conclusion: Helps in understanding which genes are most influential in the variance captured by PCA, useful for dimensionality reduction and data visualization.
-Rplot22: Heatmap with Hierarchical Clustering
+
+##Rplot22: Heatmap with Hierarchical Clustering##
 Heading: Hierarchically Clustered Expression Heatmap
 Interpretation:
 Both genes and samples are hierarchically clustered.

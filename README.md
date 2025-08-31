@@ -102,7 +102,3 @@ BiocManager::install(c("clusterProfiler", "org.Hs.eg.db"))
 ## Contact
 
 Please raise issues or start discussions for questions, suggestions, or collaboration.
-
-
-[5](https://www.sciencedirect.com/science/article/pii/S0925400524007627)
-[6](https://www.aphl.org/aboutAPHL/publications/Documents/EH-2022-SARSCoV2-Wastewater-Surveillance-Testing-Guide.pdf)

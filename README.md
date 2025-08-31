@@ -69,8 +69,6 @@ COVID_ddPCR_Project/
 ├── results/
 │   ├── cluster_markers.csv             # Differential marker tables
 │   └── plots/                         # UMAPs, heatmaps, dotplots
-├── sample_data/
-│   └── matrix_sample.rds               # Sample processed data
 ├── README.md                          # This overview and guide
 ```
 

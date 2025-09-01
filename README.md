@@ -1,102 +1,102 @@
-# COVID-19-ddPCR-Reanalysis
-Here is a detailed and guided README.md based on the overview and outline of your COVID-ddPCR Reanalysis project. It highlights objectives, data, methods, expected outcomes, and skills demonstrated, making it portfolio-ready:
+# Computational Reanalysis of COVID-19 Single-Cell RNA Sequencing Data
 
-***
 
-# COVID-ddPCR Reanalysis Project
+# 🧬 Computational Reanalysis of COVID-19 Single-Cell RNA Sequencing Data
 
-## Project Overview
+## 📌 Project Overview
 
-An independent reanalysis of publicly available droplet digital PCR (ddPCR) data from COVID-19 patients to demonstrate comprehensive bioinformatics skills, including data preprocessing, exploratory data visualization, statistical interpretation, and biological insight extraction related to viral load quantification.
+This project performs a computational reanalysis of publicly available single-cell RNA-sequencing (scRNA-seq) data derived from COVID-19 patient samples. Using the **Seurat** package in R, I processed the raw count matrices, performed clustering, identified cell type–specific marker genes, and carried out **functional enrichment analysis (GO)** to highlight the biological pathways dysregulated during SARS-CoV-2 infection.
 
-## Objective
+The goal is to demonstrate advanced **bioinformatics and computational biology skills** by reproducing and extending published datasets into a reproducible pipeline.
 
-To analyze quantitative ddPCR measurements of SARS-CoV-2 viral load from publicly available datasets to:
+---
 
-- Clean and preprocess ddPCR count and fluorescence data for accurate analysis.
-- Explore viral load patterns across patient samples with relevant clinical metadata.
-- Perform robust statistical testing to identify significant differences in viral loads.
-- Interpret results in the biological and clinical contexts of COVID-19 infection and recovery.
+## 📂 Dataset
 
-## Dataset
+* Source: [GEO accession — GSM4557327](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM4557327)
+* Format: `.rds` count matrix (with exon/intron/spanning annotations).
+* Preprocessing: Extracted exon counts, created **Seurat object**, performed QC, normalization, clustering.
 
-- Source: Public dataset from GEO (accession GSE150728).
-- Description: Raw ddPCR counts and fluorescence intensity of viral targets across multiple patient samples, including clinical metadata.
-- Format: Compressed RDS files suitable for direct statistical and visual analyses.
+---
 
-## Methods and Workflow
+## 🛠️ Methods / Pipeline
 
-1. **Data Acquisition and Preprocessing**  
-   - Download data and parse it using R and relevant libraries.  
-   - Handle missing or inconsistent data points, normalizing counts for comparability.
+1. **Data Import & Seurat Object Creation**
 
-2. **Exploratory Data Analysis (EDA)**  
-   - Generate summary statistics including means, ranges, and variability.  
-   - Visualize viral load distributions using boxplots, heatmaps, and scatterplots.  
-   - Correlate viral load with clinical features like patient status or time points.
+   * Read raw counts (exon matrix).
+   * Created `Seurat` object with metadata.
 
-3. **Statistical Interpretation**  
-   - Conduct group comparisons or time-series analyses using statistical tests.  
-   - Assess significance and biological relevance of viral load differences.
+2. **Quality Control (QC)**
 
-4. **Biological Insight and Reporting**  
-   - Contextualize findings with current COVID-19 literature.  
-   - Provide comprehensive documentation and clear visual outputs.
+   * Filtered cells by number of features & counts.
+   * Calculated **percent mitochondrial genes** to remove low-quality cells.
 
-## Expected Outcomes
+3. **Normalization & Feature Selection**
 
-- Cleaned, normalized ddPCR viral load dataset ready for downstream analyses.
-- Visual representations of viral load trends and distributions.
-- Statistical evidence highlighting key differences among patient groups.
-- Interpretative insights into viral persistence, clearance, and clinical implications.
-- Well-documented scripts ready for reproducibility and extension.
+   * Log normalization.
+   * Identified top variable genes.
 
-## Skills Demonstrated
+4. **Dimensionality Reduction & Clustering**
 
-- Data downloading, parsing, and cleaning in R.
-- Proficiency with ddPCR quantitative data and single-cell RNA-seq integration.
-- Statistical data analysis and visualization (ggplot2, Seurat).
-- Biological integration and interpretation of complex molecular datasets.
-- Creation of reproducible and well-documented bioinformatics pipelines.
+   * PCA for initial reduction.
+   * **UMAP** for visualization.
+   * Louvain clustering to identify cell populations.
 
-## Repository Structure
+5. **Marker Gene Identification**
+
+   * Ran `FindAllMarkers()` to extract cluster-specific genes.
+   * Highlighted genes like **S100A8, HBB, IFI27**.
+
+6. **Functional Enrichment**
+
+   * **GO Biological Process** enrichment of marker genes
+---
+
+## 📊 Results
+
+* **UMAP clustering** revealed distinct immune cell populations.
+* **Cluster markers** included inflammatory genes (*S100A8/S100A9*), interferon-induced genes (*IFI27*), and hemoglobin (*HBB*).
+* **GO/KEGG enrichment** suggested activation of:
+
+  * Immune response pathways.
+  * Interferon signaling.
+  * Inflammatory cascades.
+
+> 📌 Plots are included in the `results/` directory:
+
+* QC violin plots
+* PCA/UMAP visualizations
+* Cluster marker heatmaps
+* GO enrichment dotplots
+
+---
+
+## 📁 Repository Structure
 
 ```
-COVID_ddPCR_Project/
-│
-├── scripts/
-│   └── covid_ddpcr_analysis.R          # Full pipeline script with comments
-├── results/
-│   ├── cluster_markers.csv             # Differential marker tables
-│   └── plots/                         # UMAPs, heatmaps, dotplots
-├── README.md                          # This overview and guide
+├── scripts/             # R scripts for each step of pipeline
+├── results/             # Figures and tables generated
+├── README.md            # Project overview (this file)
+
 ```
 
-## Dependencies
+---
 
-- R (≥ 4.0)
-- Seurat
-- DropletUtils
-- clusterProfiler
-- dplyr
-- ggplot2
-- org.Hs.eg.db
+## 🔧 Tools & Packages
 
-Install with:
+* **R (≥ 4.0)**
+* [Seurat](https://satijalab.org/seurat/)
+* [clusterProfiler](https://yulab-smu.top/biomedical-knowledge-mining-book/)
+* tidyverse
 
-```r
-install.packages(c("Seurat", "DropletUtils", "dplyr", "ggplot2"))
-BiocManager::install(c("clusterProfiler", "org.Hs.eg.db"))
-```
+---
+## 🧑‍💻 Author
 
-## How to Run
+**Saman Israr**
+📫 \samanisrar200@gmail.com
+🔗 \www.linkedin.com/in/saman-israr-200baac | https://www.kaggle.com/samanisrar
+---
 
-1. Clone or download this repository.
-2. Place any full or sample .rds data files in the `sample_data` folder.
-3. Open `scripts/covid_ddpcr_analysis.R` in RStudio or R.
-4. Run the script to reproduce data processing, analysis, and plots.
-5. View results saved in the `results/` directory.
+✨ This project highlights expertise in **single-cell transcriptomics, statistical analysis, and reproducible bioinformatics workflows**.
 
-## Contact
 
-Please raise issues or start discussions for questions, suggestions, or collaboration.
